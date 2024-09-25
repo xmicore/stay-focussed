@@ -1,0 +1,42 @@
+.timer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: clamp(15em, 45vw, 20em);
+  padding: 1em;
+
+  background-color: #393636;
+  color: #ffffff;
+  font-size: large;
+  border-radius: 5px;
+}
+
+.timer-play {
+  background-color: #4f4c4c;
+  border-radius: 5px;
+  color: #ffffff;
+  border: 1px solid #d3d3d3;
+  font-size: medium;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.timer__controls {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer-control {
+  width: 3em;
+  height: 3em;
+  background-color: #4f4c4c;
+  border-radius: 5px;
+  color: #ffffff;
+  border: 1px solid #d3d3d3;
+  font-size: medium;
+  padding: 1em;
+}
