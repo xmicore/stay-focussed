@@ -27,19 +27,29 @@ export default function Timer() {
 
   return (
     <>
-      <div className="timer outline">
+      <div className="timer">
         <div className="timer__controls">
-          <button className="timer-control" onClick={decreaseCounter}>
+          <button
+            className="timer__button timer__button--control"
+            onClick={decreaseCounter}
+          >
             <FontAwesomeIcon icon={faMinus} />
           </button>
-          <span>
-            <b>{counter}</b> Minuten
-          </span>
-          <button className="timer-control" onClick={increaseCounter}>
+          <div className="timer__duration">
+            <span className="timer__counter">{counter}</span>
+            Minuten
+          </div>
+          <button
+            className="timer__button timer__button--control"
+            onClick={increaseCounter}
+          >
             <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>
-        <button className="timer-play" onClick={startSession}>
+        <button
+          className="timer__button timer__button--play"
+          onClick={startSession}
+        >
           <FontAwesomeIcon icon={faPlay} />
           <span>Fokus</span>
         </button>
