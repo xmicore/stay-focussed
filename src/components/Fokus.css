@@ -1,0 +1,32 @@
+.fokus {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: clamp(15em, 45vw, 20em);
+  padding: 1em;
+
+  background-color: hsl(0, 3%, 22%);
+  color: #ffffff;
+  font-size: large;
+  border-radius: 5px;
+}
+
+.fokus_duration {
+  display: flex;
+  justify-content: center;
+}
+
+.fokus__controls {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.fokus__button {
+  background-color: #4f4c4c;
+  border-radius: 5px;
+  color: #ffffff;
+  border: 1px solid #d3d3d3;
+  font-size: medium;
+  padding: 1em;
+}
