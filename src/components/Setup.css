@@ -1,4 +1,4 @@
-.fokus {
+.setup {
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -11,23 +11,38 @@
   border-radius: 5px;
 }
 
-.fokus_duration {
-  display: flex;
-  justify-content: center;
-}
-
-.fokus__controls {
+.setup__controls {
   display: flex;
   gap: 1em;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.fokus__button {
+.setup__button {
   background-color: #4f4c4c;
   border-radius: 5px;
   color: #ffffff;
   border: 1px solid #d3d3d3;
   font-size: medium;
+}
+
+.setup__button--play {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  padding-block: 1em;
+}
+
+.setup__duration {
+  display: flex;
+  gap: 1ch;
+}
+
+.setup__counter {
+  font-weight: bold;
+}
+
+.setup__button--control {
   width: 3em;
   height: 3em;
 }

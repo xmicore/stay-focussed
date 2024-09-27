@@ -4,20 +4,28 @@ import {
   faReply,
   faEyeSlash,
   faBug,
+  faPause,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Fokus.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Timer from "./Timer";
 
 type FokusProps = {
   duration: number;
 };
 
 export default function Fokus({ duration }: FokusProps) {
-  const [hideDuration, seHideDuration] = useState(true);
+  const [hideDuration, setHideDuration] = useState(false);
 
   const toggleHideDuration = () => {
-    seHideDuration((prev) => !prev);
+    setHideDuration((prev) => !prev);
   };
+
+  const [timerDuration, setTimerDuration] = useState(0);
+
+  useEffect(() => {
+    setTimerDuration(duration);
+  }, [duration]);
 
   return (
     <>
@@ -26,7 +34,9 @@ export default function Fokus({ duration }: FokusProps) {
           <span hidden={!hideDuration}>
             <FontAwesomeIcon icon={faBug} />
           </span>
-          <span hidden={hideDuration}>{duration} Minuten</span>
+          <span hidden={hideDuration}>
+            <Timer durationInMinutes={timerDuration} />
+          </span>
         </div>
         <div className="fokus__controls">
           <button className="fokus__button">

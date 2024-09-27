@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import Timer from './components/Timer';
+import Setup from './components/Setup';
 import Fokus from './components/Fokus';
 
 function App() {
+
+const [timerDuration, setTimerDuration] = useState(0)
+
+  const startFokus = (duration: number) => {
+    setTimerDuration(duration);
+  };
+
   return (
     <div className="app">
       <h1>Stay Focussed</h1>
-      <Timer/>
+      <Setup onFokusStart={startFokus}/>
       <br></br>
-      <Fokus duration={2} />
+      <Fokus duration={timerDuration} />
     </div>
   );
 }
