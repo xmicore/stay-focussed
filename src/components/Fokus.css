@@ -31,3 +31,8 @@
   width: 3em;
   height: 3em;
 }
+
+.fokus__button[disabled] {
+  background-color: #423f3f;
+  border-color: #6b6a6a;
+}

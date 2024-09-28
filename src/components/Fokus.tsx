@@ -5,6 +5,7 @@ import {
   faEyeSlash,
   faBug,
   faPause,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Fokus.css";
 import { useState, useEffect } from "react";
@@ -17,9 +18,14 @@ type FokusProps = {
 
 export default function Fokus({ duration, onSetup }: FokusProps) {
   const [hideDuration, setHideDuration] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   const toggleHideDuration = () => {
     setHideDuration((prev) => !prev);
+  };
+
+  const togglePause = () => {
+    setPaused((prev) => !prev);
   };
 
   const [timerDuration, setTimerDuration] = useState(0);
@@ -36,18 +42,18 @@ export default function Fokus({ duration, onSetup }: FokusProps) {
             <FontAwesomeIcon icon={faBug} />
           </span>
           <span hidden={hideDuration}>
-            <Timer minutes={timerDuration} />
+            <Timer minutes={timerDuration} paused={paused} />
           </span>
         </div>
         <div className="fokus__controls">
-          <button className="fokus__button">
-            <FontAwesomeIcon icon={faPlay} />
+          <button className="fokus__button" onClick={togglePause}>
+            <FontAwesomeIcon icon={paused ? faPlay : faPause} />
           </button>
-          <button className="fokus__button">
+          <button className="fokus__button" disabled={!paused}>
             <FontAwesomeIcon icon={faReply} onClick={onSetup} />
           </button>
           <button className="fokus__button" onClick={toggleHideDuration}>
-            <FontAwesomeIcon icon={faEyeSlash} />
+            <FontAwesomeIcon icon={hideDuration ? faEye : faEyeSlash} />
           </button>
         </div>
       </div>

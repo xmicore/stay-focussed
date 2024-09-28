@@ -5,16 +5,34 @@ import "./Timer.css";
 
 type TimerProps = {
   minutes: number;
+  paused: boolean;
 };
 
-export default function Timer({ minutes }: TimerProps) {
+export default function Timer({ minutes, paused }: TimerProps) {
   const [finished, setFinished] = useState(false);
   const [timerMinutes, setTimerMinutes] = useState(0);
-  const [timerrSeconds, setTimerSeconds] = useState(0);
+  const [timerSeconds, setTimerSeconds] = useState(0);
+
+  const [target, setTarget] = useState(new Date());
 
   useEffect(() => {
-    const target = new Date(new Date().getTime() + minutes * 60000);
+    setTarget((prev) => new Date(new Date().getTime() + minutes * 60000));
+  }, [minutes]);
+
+  useEffect(() => {
+    const now = new Date();
+    const newTarget =
+      now.getTime() + timerMinutes * 60 * 1000 + timerSeconds * 1000;
+    setTarget((pev) => new Date(newTarget));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paused]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
+      if (paused) {
+        return;
+      }
+
       const now = new Date();
 
       const difference = target.getTime() - now.getTime();
@@ -31,7 +49,7 @@ export default function Timer({ minutes }: TimerProps) {
     }, 1_000);
 
     return () => clearInterval(interval);
-  }, [minutes]);
+  }, [target, paused]);
 
   return (
     <>
@@ -43,7 +61,7 @@ export default function Timer({ minutes }: TimerProps) {
       ) : (
         <div className="timer">
           {timerMinutes.toString().padStart(2, "0")}:
-          {timerrSeconds.toString().padStart(2, "0")}
+          {timerSeconds.toString().padStart(2, "0")}
         </div>
       )}
     </>
