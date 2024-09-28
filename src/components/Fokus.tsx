@@ -12,9 +12,10 @@ import Timer from "./Timer";
 
 type FokusProps = {
   duration: number;
+  onSetup: () => void;
 };
 
-export default function Fokus({ duration }: FokusProps) {
+export default function Fokus({ duration, onSetup }: FokusProps) {
   const [hideDuration, setHideDuration] = useState(false);
 
   const toggleHideDuration = () => {
@@ -35,7 +36,7 @@ export default function Fokus({ duration }: FokusProps) {
             <FontAwesomeIcon icon={faBug} />
           </span>
           <span hidden={hideDuration}>
-            <Timer durationInMinutes={timerDuration} />
+            <Timer minutes={timerDuration} />
           </span>
         </div>
         <div className="fokus__controls">
@@ -43,7 +44,7 @@ export default function Fokus({ duration }: FokusProps) {
             <FontAwesomeIcon icon={faPlay} />
           </button>
           <button className="fokus__button">
-            <FontAwesomeIcon icon={faReply} />
+            <FontAwesomeIcon icon={faReply} onClick={onSetup} />
           </button>
           <button className="fokus__button" onClick={toggleHideDuration}>
             <FontAwesomeIcon icon={faEyeSlash} />

@@ -4,16 +4,16 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import "./Timer.css";
 
 type TimerProps = {
-  durationInMinutes: number;
+  minutes: number;
 };
 
-export default function Timer({ durationInMinutes }: TimerProps) {
+export default function Timer({ minutes }: TimerProps) {
   const [finished, setFinished] = useState(false);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [timerMinutes, setTimerMinutes] = useState(0);
+  const [timerrSeconds, setTimerSeconds] = useState(0);
 
   useEffect(() => {
-    const target = new Date(new Date().getTime() + durationInMinutes * 60000);
+    const target = new Date(new Date().getTime() + minutes * 60000);
     const interval = setInterval(() => {
       const now = new Date();
 
@@ -22,16 +22,16 @@ export default function Timer({ durationInMinutes }: TimerProps) {
       const nextMinutes = Math.floor(
         (difference % (1000 * 60 * 60)) / (1000 * 60),
       );
-      setMinutes(nextMinutes);
+      setTimerMinutes(nextMinutes);
 
       const nextSeconds = Math.floor((difference % (1000 * 60)) / 1000);
-      setSeconds(nextSeconds);
+      setTimerSeconds(nextSeconds);
 
       setFinished(nextMinutes <= 0 && nextSeconds <= 0);
     }, 1_000);
 
     return () => clearInterval(interval);
-  }, [durationInMinutes]);
+  }, [minutes]);
 
   return (
     <>
@@ -42,8 +42,8 @@ export default function Timer({ durationInMinutes }: TimerProps) {
         </div>
       ) : (
         <div className="timer">
-          {minutes.toString().padStart(2, "0")}:
-          {seconds.toString().padStart(2, "0")}
+          {timerMinutes.toString().padStart(2, "0")}:
+          {timerrSeconds.toString().padStart(2, "0")}
         </div>
       )}
     </>

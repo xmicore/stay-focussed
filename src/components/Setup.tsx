@@ -4,15 +4,16 @@ import "./Setup.css";
 import { useState } from "react";
 
 type SetupProps = {
-  onFokusStart: (duration: number) => void;
+  duration: number;
+  onFokus: (duration: number) => void;
 };
 
-export default function Setup({ onFokusStart }: SetupProps) {
+export default function Setup({ duration, onFokus }: SetupProps) {
   // Start with 30 minutes
-  const [counter, setCounter] = useState(30);
+  const [counter, setCounter] = useState(duration);
 
   const startSession = () => {
-    onFokusStart(counter);
+    onFokus(counter);
   };
 
   const decreaseCounter = () => {
