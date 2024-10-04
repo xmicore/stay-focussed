@@ -37,6 +37,7 @@ export default function Setup({ duration, onFokus }: SetupProps) {
           <button
             className="setup__button setup__button--control"
             onClick={decreaseCounter}
+            title="Zeit verringern"
           >
             <FontAwesomeIcon icon={faMinus} />
           </button>
@@ -47,6 +48,7 @@ export default function Setup({ duration, onFokus }: SetupProps) {
           <button
             className="setup__button setup__button--control"
             onClick={increaseCounter}
+            title="Zeit erhöhen"
           >
             <FontAwesomeIcon icon={faPlus} />
           </button>
@@ -54,6 +56,7 @@ export default function Setup({ duration, onFokus }: SetupProps) {
         <button
           className="setup__button setup__button--play"
           onClick={startSession}
+          title="Sitzung starten"
         >
           <FontAwesomeIcon icon={faPlay} />
           <span>Fokus</span>

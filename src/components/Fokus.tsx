@@ -46,13 +46,25 @@ export default function Fokus({ duration, onSetup }: FokusProps) {
           </span>
         </div>
         <div className="fokus__controls">
-          <button className="fokus__button" onClick={togglePause}>
+          <button
+            className="fokus__button"
+            onClick={togglePause}
+            title={paused ? "Sitzung fortsetzen" : "Sitzung pausieren"}
+          >
             <FontAwesomeIcon icon={paused ? faPlay : faPause} />
           </button>
-          <button className="fokus__button" disabled={!paused}>
+          <button
+            className="fokus__button"
+            disabled={!paused}
+            title="Sitzung zurücksetzen"
+          >
             <FontAwesomeIcon icon={faReply} onClick={onSetup} />
           </button>
-          <button className="fokus__button" onClick={toggleHideDuration}>
+          <button
+            className="fokus__button"
+            onClick={toggleHideDuration}
+            title={hideDuration ? "Zeit anzeigen" : "Zeit ausblenden"}
+          >
             <FontAwesomeIcon icon={hideDuration ? faEye : faEyeSlash} />
           </button>
         </div>
